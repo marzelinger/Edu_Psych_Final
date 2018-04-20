@@ -138,8 +138,8 @@ inSimulation = false;
       baloon2.clearQueue().stop();
       baloon2.removeClass('bigger',500);
       baloon2.animate({top:'0'});
-      baloon1.clearQueue().stop();
       baloon3.clearQueue().stop();
+      baloon1.clearQueue().stop();
       $('#ic2').toggleClass('square',1000);
       baloon2.toggleClass('chosen2',1000);
       b2 = !b2;
@@ -148,11 +148,13 @@ inSimulation = false;
         inSimulation = true;
       }
       else if(document.getElementById("clicktext2").innerHTML == "Click to Exit"){
+        // $("#canvas3").hide();
         document.getElementById("clicktext2").innerHTML = "Click to Begin";
       }
     }
     else{
-    startSimulation1();
+    $('#ic2').css("display", "none");
+    $("#canvas2").show( "slide",2000)
     document.getElementById("clicktext2").innerHTML = "Click to Exit";
     }
   })
