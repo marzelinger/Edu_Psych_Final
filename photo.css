@@ -1,0 +1,25 @@
+
+#photo{
+  background-color:  #AED581;
+  display: flex;
+  padding: 0px;
+}
+#shoe{
+  margin-top: 7%;
+  align-self: center;
+  width: 100%;
+  height: auto;
+}
+#arrow{
+  margin-top: -100px;
+  /* position: fixed; */
+  background-color:  #AED581;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#arrow img{
+  height: 100px;
+  width: auto;
+  align-self: center;
+}

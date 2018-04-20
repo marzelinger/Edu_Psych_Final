@@ -1,0 +1,99 @@
+body{
+  margin: 0px;
+  padding: 0px;
+}
+.container{
+  display: grid;
+  grid-template-columns: repeat(20,1fr);
+  grid-template-rows: 100px 2px auto 2px;
+  grid-auto-rows: 100px;
+  height: 100vh;
+  border: solid 10px #212121;
+  background-color: #AED581;
+}
+#border1{
+  grid-column: span 1;
+  grid-row: span 1;
+}
+#border2{
+  grid-column: span 18;
+  grid-row: span 1;
+  background-color: white;
+}
+#border3{
+  grid-column: span 1;
+  grid-row: span 1;
+}
+#navbar{
+  position: fixed;
+  grid-column: span 20;
+  grid-row: span 1;
+  display: grid;
+  grid-template-columns: repeat(20,1fr);
+  grid-template-rows: 100px;
+  font-family: 'Kirang Haerang', cursive;
+}
+#logo{
+  grid-column: span 3;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+  /* background-color: pink; */
+}
+h1{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+#circle{
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Shadows Into Light', cursive;
+  color: #AED581;
+  border-radius: 100%;
+}
+#Space{
+  grid-column: span 5;
+  grid-row: span 1;
+}
+.link{
+  font-size: 2vw;
+  justify-self: center;
+  align-self: center;
+  color: white;
+}
+#Sources{
+  grid-column: span 4;
+  grid-row: span 1;
+}
+#About{
+  grid-column: span 3;
+  grid-row: span 1;
+}
+#Experiences{
+  grid-column: span 5;
+  grid-row: span 1;
+}
+#info{
+  padding: 10px;
+  background-color: #AED581;
+  grid-column: span 20;
+  grid-row: span 1;
+}
+
+#border4{
+  grid-column: span 1;
+  grid-row: span 1;
+}
+#border5{
+  grid-column: span 18;
+  grid-row: span 1;
+  background-color: white;
+}
+#border6{
+  grid-column: span 1;
+  grid-row: span 1;
+}

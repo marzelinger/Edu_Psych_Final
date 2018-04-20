@@ -1,0 +1,105 @@
+#info{
+display: grid;
+grid-template-columns: 33% 33% 33%;
+grid-template-rows: 1fr;
+padding-left: 0px;
+padding-right: 0px;
+}
+
+.card{
+  display:flex;
+  position: relative;
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color: #212121;
+  width: 70%;
+  max-height: 80%;
+  justify-self: center;
+  align-self: center;
+  border-radius: 100%;
+  /* justify-items: center; */
+  align-items: center;
+  justify-items: center;
+  font-family: 'Shrikhand', cursive;
+  color: #212121;
+  font-size: 1.4vw;
+}
+.card h2{
+  font-size: 1.2vw;
+}
+.card:before{
+  content:"";
+  display: block;
+  padding-top:100%;
+}
+.cardtext{
+  position: relative;
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color: white;
+  width: 83%;
+  max-height: 100%;
+  border: solid 4px #AED581;
+  border-radius: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.cardtitle{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.cardtitle h1{
+  align-self: center;
+}
+.cardtitle h2{
+  align-self: center;
+}
+.cardtext:before{
+  content:"";
+  display: block;
+  padding-top:100%;
+}
+.square{
+  border-radius:0%;
+}
+.chosen1{
+  z-index:999;
+  width:90vw;
+  height:60vh;
+  left:33vw;
+  border-radius:0%;
+}
+.chosen2{
+  z-index:999;
+  width:90vw;
+  height:60vh;
+  border-radius:0%;
+}
+.chosen3{
+  z-index:999;
+  width:90vw;
+  height:60vh;
+  right:33vw;
+  border-radius:0%;
+}
+.bigger{
+  width:90%;
+  font-size: 2vw;
+}
+.canvas{
+  display: none;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width:85vw;
+  height:55vh;
+}
