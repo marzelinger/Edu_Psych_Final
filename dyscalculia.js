@@ -105,11 +105,19 @@ else if(challenge1){
     m.rect(m.width/2+150, 200, 20, 20);
   }
 }
+else if(teaching){
+  m.textSize(30);
+  m.textAlign(m.CENTER)
+  m.fill(33,33,33)
+  m.text("How can you help students with dyscalculia in the classroom?", 0, 30, m.width, m.height);
+  m.textSize(15);
+  m.text("You clearly noticed that there was no symbol representing the number of squares in the last challenge. The sense of frustration you felt while figuring this out is a feeling that students with learning disabilities must feel and overcome constantly. In these excercises it was most likely easy for you to count the number of squares, but difficult for you to associate the symbols with the concept of how many things you saw. The key problem for dyscalculic learners is retaining basic facts and math procedures in their long term memory. Many aspects of math, particularly in the earlier years rely on rote learing such as time tables. However, if you teach students to understand, they will be more likely to succeed. Revisiting things over and over again, explaining and showing why, and identifying and interpretting errors are all ways to help students understand rather than memorize.", 0, 100, m.width, m.height);
+}
 else if(endScene){
   m.textSize(15);
   m.textAlign(m.CENTER)
   m.fill(33,33,33)
-  m.text("You have clearly noticed that there was no symbol representing the number of squares in the last challenge. The sense of frustration you felt while figuring this out is a feeling that students with learning disabilities must feel and overcome constantly. In these excercises it was most likely easy for you to count the number of squares, but difficult for you to associate the symbols with the concept of how many things you saw. Click anywhere on the page to exit this simulation. From there you will be able to either check out the other simulations or continue to the next section of this website to see information on how to help students with this learning disability in the classroom.", 0, 30, m.width, m.height);
+  m.text("Click anywhere on the page to exit this simulation. From there you will be able to check out the other simulations.", 0, 30, m.width, m.height);
   if(m.mouseIsPressed){
       m.remove();
       $('#canvas1').hide();
@@ -138,10 +146,16 @@ m.nextScene = function(){
     }
     else if(challenge1==true){
       challenge1= false
-      endScene = true;
+      teaching = true;
     }
+    else if(teaching == true){
+      teaching = false
+      endScene =true;
+    }
+
     m.clear();
     m.background('white');
+    currTime = 0;
 }
 m.nextCount = function(){
     correct = false;

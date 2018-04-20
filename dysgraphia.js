@@ -58,8 +58,6 @@ p.draw = function(){
         pastFrame = p.frameCount;
       }
     }
-
-
   }
   if(sceneOne){
     p.textSize(20);
@@ -126,7 +124,7 @@ p.draw = function(){
       if(p.clickedArrow(p.mouseX, p.mouseY) && p.frameCount - pastFrame > 100){
         console.log("?")
         sceneThree = false;
-        endScene = true;
+        teaching = true;
         pastFrame = p.frameCount;
         p.clear();
         p.background('white');
@@ -141,11 +139,29 @@ p.draw = function(){
       }
     }
   }
+  else if(teaching){
+    p.textSize(20);
+    p.fill(33,33,33)
+    p.textAlign(p.CENTER)
+    p.text("How can you help students with dysgraphia in the classroom?",0, 30, p.width, p.height)
+    p.textSize(15);
+    p.drawArrow();
+    p.text("While students with dysgraphia may not have their pen jumping around the page as they write, they do have to endure the same frustration that you experienced while trying to express something that you clearly understood, like your name. To help students with dysgraphia in the classroom you can begin by building up their confidence. Giving them a way to express their ideas without encountering the struggle of writing will show them that they are capable of learning the material. Some alternatives include allowing a student to use a keyboard or using videos/audio recordings. Once they are confident in themselves, you can begin to address their handwriting. Short bursts of handwriting excercises, as well as working with them to fix their handwriting posture can help them improve their writing abilities.", 0, 60, p.width, p.height);
+    if(p.mouseIsPressed){
+      if(p.clickedArrow(p.mouseX, p.mouseY) && p.frameCount - pastFrame > 100){
+        teaching = false;
+        endScene = true;
+        p.clear();
+        p.background('white');
+        pastFrame = p.frameCount;
+      }
+    }
+  }
   else if(endScene){
     p.textSize(20);
     p.fill(33,33,33)
     p.textAlign(p.CENTER)
-    p.text("Hopefully this experience will help you be more understanding of students with this learning disability in the future! Click anywhere on the page to exit this simulation. From there you can either try a different experience, or move onto the next section of this website for information on how to work with students that have this learning disability.", 0, 30, p.width, p.height);
+    p.text("Click anywhere on the page to exit this simulation. From there you can either try a different experience, or move onto the next section of this website for information on how to work with students that have this learning disability.", 0, 30, p.width, p.height);
     if(p.mouseIsPressed && p.frameCount - pastFrame > 100){
         p.remove();
         $('#canvas3').hide();
