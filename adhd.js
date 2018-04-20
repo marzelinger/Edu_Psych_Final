@@ -10,9 +10,9 @@ var skipping;
 //implement a click to play, need a transition --> have an arrow appear on the right that will cause the screen to slide off to the left
 function preload(){
   bell = loadSound('bell.mp3');
-  // traffic = loadSound('traffic.mp3');
-  // classroom = loadSound('classroom.mp3');
-  // skipping = loadSound('skipping.mp3');
+  traffic = loadSound('traffic.mp3');
+  classroom = loadSound('classroom.mp3');
+  skipping = loadSound('skipping.mp3');
 }
 
 function setup() {
