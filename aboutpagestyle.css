@@ -61,11 +61,15 @@
   display: grid;
 
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: .2fr 1fr;
   /* margin-top:10px; */
   background-color:#AED581;
   color:white;
   font-family: 'Roboto', sans-serif;
+}
+#citations{
+  grid-column: span 1;
+  grid-row: span 2;
 }
 #sourcestitle{
   margin-top: 25px;
@@ -74,7 +78,7 @@
   grid-row:span 1;
   margin-right: 10%;
   font-family: 'Pacifico', cursive;
-  font-size: 12;
+
   grid-column: span 1;
   grid-row: span 1;
   display: grid;
@@ -84,10 +88,12 @@
   text-align: right;
 }
 #cite p{
-  grid-column: span 1
-  grid-row:span 1;
+  font-size: 14px;
+  /* grid-column: span 1 */
+  /* grid-row:span 1; */
   margin:0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 body{
