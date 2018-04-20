@@ -57,3 +57,39 @@
 #morespace{
   grid-column: span 1;
 }
+#cite{
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* margin-top:10px; */
+  background-color:#AED581;
+  color:white;
+  font-family: 'Roboto', sans-serif;
+}
+#sourcestitle{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  grid-column: span 1;
+  grid-row:span 1;
+  margin-right: 10%;
+  font-family: 'Pacifico', cursive;
+  font-size: 12;
+  grid-column: span 1;
+  grid-row: span 1;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(7,1fr);
+  /* justify-self: end; */
+  text-align: right;
+}
+#cite p{
+  grid-column: span 1
+  grid-row:span 1;
+  margin:0;
+  margin-bottom: 10px;
+}
+
+body{
+    background-color:#AED581;
+}
