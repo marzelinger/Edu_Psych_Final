@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  game_state = false;
   var circle = document.getElementById("circle");
   circle.addEventListener('mouseover', function(){
 
@@ -153,6 +153,7 @@ inSimulation = false;
       }
     }
     else{
+    // game_state = false;
     $('#ic2').css("display", "none");
     $("#canvas2").show( "slide",2000)
     document.getElementById("clicktext2").innerHTML = "Click to Exit";

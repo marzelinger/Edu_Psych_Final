@@ -1,6 +1,6 @@
 
 var adhd = function(a){
-  var game_state = false
+
   var currTime = 0
   var numRain = 10
   var sizeRange = 50
@@ -14,6 +14,9 @@ var adhd = function(a){
   var sound = false;
   var visual = false;
   var lastScene = false;
+  var teachingADHD = false;
+  var w = .85*Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var h = .55*Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
   function ball() {
     this.radius = Math.floor(Math.random() * 20 + sizeRange)
@@ -38,13 +41,18 @@ var adhd = function(a){
 
   a.setup = function(){
     var canvasDiv = document.getElementById('canvas2');
-    var w = .85*Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var h = .55*Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
     // console.log(w);
-    var canvas2 = a.createCanvas(w, h);
-    canvas2.parent('canvas2');
+    var mycanvas2 = a.createCanvas(w, h);
+    mycanvas2.parent('canvas2');
     a.background('white');
     a.time();
+    intro = true;
+    regular = false;
+    sound = false;
+    visual = false;
+    lastScene = false;
+    teachingADHD = false;
     document.addEventListener('keydown', e => {
       if (e.keyCode == '39') {
         a.nextScene();
@@ -53,7 +61,6 @@ var adhd = function(a){
   }
 
   a.draw = function(){
-    // console.log(regular)
     if(reading){
       a.fill(33,33,33)
       a.rect(a.width/2 - 50, 100, 50, 50)
@@ -122,32 +129,40 @@ var adhd = function(a){
         }
       }
     }
-    else if(teaching){
-      console.log("teaching")
+    else if(teachingADHD){
+      console.log("teachingADHD")
       a.textSize(25);
       a.textAlign(a.CENTER)
       a.fill(33,33,33)
       a.text("How can you help students with ADHD in the classroom?", 0, 30, a.width, a.height);
       a.textSize(15);
       a.text("You may have noticed that it took you much longer to read the paragraph the second time around. Although both paragraphs were 160 words long, trying to complete any task when severely distracted puts you at an extreme disadvantage. Imagine you had been competing against a friend and they had the first example while you had the second. You couldn't control the distractions, but they were likely detrimental to your reading ability. Although colored circles aren't flying across the page of every student with ADHD, their ability to ignore distractions is such that every day occurences like talking and noises of traffic may have a similar consequence.", 0, 60, a.width, a.height);
-      a.text("Some teaching techniques to help students with ADHD are: keeping instructions simply and structured, varying the pace of lessons and including different times of activities, and developing a unobtrusive cue with the student to remind them to stay on task. Allowing the student to take frequent breaks as well as giving them some kind of physical outlet can help them stay focused.", 0, 200, a.width, a.height);
+      a.text("Some teachingADHD techniques to help students with ADHD are: keeping instructions simply and structured, varying the pace of lessons and including different times of activities, and developing a unobtrusive cue with the student to remind them to stay on task. Allowing the student to take frequent breaks as well as giving them some kind of physical outlet can help them stay focused.", 0, 200, a.width, a.height);
     }
     else if(lastScene){
+      console.log("last scene!")
       a.textSize(15);
       a.textAlign(a.CENTER)
       a.fill(33,33,33)
       a.text("Click anywhere on the page to exit this simulation. Feel free to continue trying other simulation.",0, 60, a.width, a.height)
       a.textAlign(a.CENTER)
-      if(a.mouseIsPressed && a.frameCount - pastFrame > 100){
-        a.remove();
-        $('#canvas2').hide();
+      if(a.mouseIsPressed && a.frameCount - pastFrame > 50){
+        // a.resizeCanvas(100,100);
+        $('#canvas2').css("display","none");
         $('#ic2').show();
         lastScene = false;
         inSimulation = false;
+        a.background('white');
+        a.time();
+        intro = true;
+        regular = false;
+        sound = false;
+        visual = false;
+        lastScene = false;
+        teachingADHD = false;
       }
     }
   }
-
 a.time = function(){
   console.log("here")
   var timer = setInterval(function() {
@@ -172,10 +187,10 @@ a.nextScene = function(){
     }
     else if(visual==true){
       visual = false
-      teaching = true;
+      teachingADHD = true;
     }
-    else if(teaching == true){
-      teaching = false;
+    else if(teachingADHD == true){
+      teachingADHD = false;
       lastScene = true;
     }
     reading = false;
@@ -197,7 +212,7 @@ a.windowResized= function() {
   a.background('white');
 }
 a.mouseClicked = function(){
-  if(!intro && !lastScene && !teaching && !a.clickedArrow(a.mouseX, a.mouseY)){
+  if(!intro && !lastScene && !teachingADHD && !a.clickedArrow(a.mouseX, a.mouseY)){
     reading = !reading;
     // console.log(reading);
     if(reading){

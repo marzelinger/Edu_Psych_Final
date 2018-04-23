@@ -1,16 +1,18 @@
-var intro = true;
-var showAssignments = false;
-var challenge1 = false;
-var endScene = false;
-var teaching = false;
-var currTime = 0;
-var go = false;
-count1 = true;
-count2 = false;
-count3 = false;
-var timer;
-var correct = false;
+
 var discalculia = function(m){
+  var dyscalcintro = true;
+  var showAssignments = false;
+  var challenge1 = false;
+  var dyscalcendScene = false;
+  var dyscalcteaching = false;
+  var currTime = 0;
+  var go = false;
+  var count1 = true;
+  var count2 = false;
+  var count3 = false;
+  var timer;
+  var correct = false;
+
 m.setup = function(){
   var canvasDiv = document.getElementById('canvas1');
   var w = .85*Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -31,7 +33,7 @@ m.setup = function(){
 m.draw = function(){
   m.clear();
   m.background('white');
-if(intro){
+if(dyscalcintro){
   m.textSize(15);
   m.textAlign(m.CENTER)
   m.fill(33,33,33)
@@ -79,7 +81,7 @@ else if(challenge1){
       }
     }
   }
-  if(count2){
+  else if(count2){
     m.printSyms3(140);
     m.fill('white')
     m.rect(m.width/2-200, 200, 20, 20);
@@ -93,7 +95,7 @@ else if(challenge1){
       }
     }
   }
-  if(count3){
+  else if(count3){
     m.printSyms3(140);
     m.fill('white')
     m.rect(m.width/2-150, 200, 20, 20);
@@ -105,7 +107,7 @@ else if(challenge1){
     m.rect(m.width/2+150, 200, 20, 20);
   }
 }
-else if(teaching){
+else if(dyscalcteaching){
   m.textSize(30);
   m.textAlign(m.CENTER)
   m.fill(33,33,33)
@@ -113,17 +115,29 @@ else if(teaching){
   m.textSize(15);
   m.text("You clearly noticed that there was no symbol representing the number of squares in the last challenge. The sense of frustration you felt while figuring this out is a feeling that students with learning disabilities must feel and overcome constantly. In these excercises it was most likely easy for you to count the number of squares, but difficult for you to associate the symbols with the concept of how many things you saw. The key problem for dyscalculic learners is retaining basic facts and math procedures in their long term memory. Many aspects of math, particularly in the earlier years rely on rote learing such as time tables. However, if you teach students to understand, they will be more likely to succeed. Revisiting things over and over again, explaining and showing why, and identifying and interpretting errors are all ways to help students understand rather than memorize.", 0, 100, m.width, m.height);
 }
-else if(endScene){
+else if(dyscalcendScene){
+  // console.log('dyscalcendScene')
   m.textSize(15);
   m.textAlign(m.CENTER)
   m.fill(33,33,33)
   m.text("Click anywhere on the page to exit this simulation. From there you will be able to check out the other simulations.", 0, 30, m.width, m.height);
   if(m.mouseIsPressed){
-      m.remove();
-      $('#canvas1').hide();
+      // m.remove();
+      $('#canvas1').css("display", "none");
       $('#ic1').show();
-      endScene = false;
+      dyscalcendScene = false;
       inSimulation = false;
+      dyscalcintro = true;
+      showAssignments = false;
+      challenge1 = false;
+      dyscalcendScene = false;
+      dyscalcteaching = false;
+      currTime = 0;
+      go = false;
+      count1 = true;
+      count2 = false;
+      count3 = false;
+      correct = false;
   }
 }
 
@@ -136,8 +150,9 @@ m.windowResized = function() {
 }
 m.nextScene = function(){
   m.clear();
-    if(intro==true){
-      intro = false;
+  // console.log(dyscalcdyscalcteaching)
+    if(dyscalcintro==true){
+      dyscalcintro = false;
       showAssignments= true;
     }
     else if(showAssignments== true){
@@ -146,13 +161,13 @@ m.nextScene = function(){
     }
     else if(challenge1==true){
       challenge1= false
-      teaching = true;
+      dyscalcteaching = true;
     }
-    else if(teaching == true){
-      teaching = false
-      endScene =true;
+    else if(dyscalcteaching==true){
+      // console.log("change dyscalcteaching to dyscalcendScene")
+      dyscalcteaching = false
+      dyscalcendScene = true;
     }
-
     m.clear();
     m.background('white');
     currTime = 0;

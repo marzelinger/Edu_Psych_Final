@@ -2,14 +2,15 @@
 var dysgraphia = function(p){
   var w = .85*Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   var h = .55*Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  var intro = true;
+  var dysintro = true;
   var sceneOne = false;
   var sceneTwo = false;
   var sceneThree = false;
-  var endScene = false;
+  var dysendScene = false;
   x = 10
   y = 20
   var pastFrame = 0;
+  var dysteaching = false;
 
   p.drawArrow = function(){
     p.fill(33,33,33)
@@ -42,7 +43,7 @@ p.setup = function(){
 
 p.draw = function(){
 // console.log(p.frameCount);
-  if(intro){
+  if(dysintro){
     p.textSize(15);
     p.textAlign(p.CENTER)
     p.fill(33,33,33)
@@ -51,7 +52,7 @@ p.draw = function(){
     p.drawArrow();
     if(p.mouseIsPressed){
       if(p.clickedArrow(p.mouseX, p.mouseY)){
-        intro = false;
+        dysintro = false;
         sceneOne = true;
         p.clear();
         p.background('white');
@@ -124,7 +125,7 @@ p.draw = function(){
       if(p.clickedArrow(p.mouseX, p.mouseY) && p.frameCount - pastFrame > 100){
         console.log("?")
         sceneThree = false;
-        teaching = true;
+        dysteaching = true;
         pastFrame = p.frameCount;
         p.clear();
         p.background('white');
@@ -139,7 +140,7 @@ p.draw = function(){
       }
     }
   }
-  else if(teaching){
+  else if(dysteaching){
     p.textSize(20);
     p.fill(33,33,33)
     p.textAlign(p.CENTER)
@@ -149,25 +150,36 @@ p.draw = function(){
     p.text("While students with dysgraphia may not have their pen jumping around the page as they write, they do have to endure the same frustration that you experienced while trying to express something that you clearly understood, like your name. To help students with dysgraphia in the classroom you can begin by building up their confidence. Giving them a way to express their ideas without encountering the struggle of writing will show them that they are capable of learning the material. Some alternatives include allowing a student to use a keyboard or using videos/audio recordings. Once they are confident in themselves, you can begin to address their handwriting. Short bursts of handwriting excercises, as well as working with them to fix their handwriting posture can help them improve their writing abilities.", 0, 60, p.width, p.height);
     if(p.mouseIsPressed){
       if(p.clickedArrow(p.mouseX, p.mouseY) && p.frameCount - pastFrame > 100){
-        teaching = false;
-        endScene = true;
+        dysteaching = false;
+        dysendScene = true;
         p.clear();
         p.background('white');
         pastFrame = p.frameCount;
       }
     }
   }
-  else if(endScene){
+  else if(dysendScene){
     p.textSize(20);
     p.fill(33,33,33)
     p.textAlign(p.CENTER)
     p.text("Click anywhere on the page to exit this simulation. From there you can either try a different experience, or move onto the next section of this website for information on how to work with students that have this learning disability.", 0, 30, p.width, p.height);
     if(p.mouseIsPressed && p.frameCount - pastFrame > 100){
-        p.remove();
-        $('#canvas3').hide();
+        // p.remove();
+        $('#canvas3').css("display","none");
         $('#ic3').show();
-        endScene = false;
+        dysendScene = false;
         inSimulation = false;
+        dysintro = true;
+        sceneOne = false;
+        sceneTwo = false;
+        sceneThree = false;
+        dysendScene = false;
+        x = 10
+        y = 20
+        pastFrame = 0;
+        dysteaching = false;
+        clear();
+        background('white');
     }
   }
 }
